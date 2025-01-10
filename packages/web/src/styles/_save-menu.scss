@@ -48,10 +48,8 @@
         }
 
         .save-menu-title{
-            p{
+            h3{
                 color: var(--clr-neutral-900);
-                font-weight: var(--fw-bold);
-                font-size: var(--fs-sub-header);
             }
             margin-bottom: 3rem;
         }
@@ -144,7 +142,6 @@
                     transition: background-color 250ms ease-in-out;
                     
                     .icon {
-                        // height: var(--fs-i);
                         width: var(--fs-i);
                         fill: var(--clr-neutral-50);
                     }

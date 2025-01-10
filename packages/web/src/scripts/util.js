@@ -21,11 +21,12 @@
  */
 
 import { editor } from 'monaco-editor'
-import { convertTDJsonToYaml, convertTDYamlToJson, tdValidator, tmValidator, compress, decompress } from '../../../core/dist/web-bundle.min.js'
+import { convertTDJsonToYaml, convertTDYamlToJson, tdValidator, tmValidator, compress, decompress} from '../../../core/dist/web-bundle.min.js'
 import tdToOpenAPI from '@thingweb/open-api-converter/dist/web-bundle.min.js'
 import tdToAsyncAPI from '@thingweb/async-api-converter/dist/web-bundle.min.js'
 import { addDefaults, removeDefaults } from '../../../defaults/dist/web-bundle.min.js'
 import { AssetInterfacesDescription } from "@thingweb/aas-aid";
+// import { ThingModelHelpers } from '@thingweb/thing-model/dist/src/tm-helpers.js'
 import { validateJsonLdBtn, tmConformanceBtn, sectionHeaders } from './validation'
 
 
@@ -182,6 +183,33 @@ export function generateAAS(fileType, editorInstance) {
         console.error(err);
     }
 }
+
+/**
+ * Generate a TD from an AAS
+ * @param { JSON } editorInput 
+ * @param { JSON } parameters 
+ * @returns 
+ */
+export function generateTDFromAAS(editorInput, parameters) {
+    
+    const assetInterfaceDescription = new AssetInterfacesDescription()
+
+    const AASInstance = JSON.stringify(editorInput)
+    const template = parameters ? JSON.stringify(parameters) : undefined
+
+    const TDInstance = assetInterfaceDescription.transformAID2TD(AASInstance, template)
+    
+    return TDInstance
+}
+
+//TODO: Finish this function when the right library has been imported
+// /**
+//  * Generates a partial Thing Description from a Thing Model
+//  * @param { JSON } model 
+//  */
+// export async function generatePartialTD(model) {
+    
+// }
 
 /**
  * applies adding unset default values

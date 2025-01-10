@@ -27,6 +27,7 @@ import './json-yaml'
 import './settings-menu'
 import './save-menu'
 import './examples-menu'
+import './import-menu'
 import { consoleElement, minMaxBtn } from './console'
 import './open-api'
 import './async-api'
@@ -34,6 +35,7 @@ import './aas'
 import './defaults'
 import './visualize'
 import './validation'
+import './import-editors'
 
 
 /***********************************************************/
@@ -153,9 +155,9 @@ function onmouseupX(e) {
  * @const { number } minExpandedConsole - Minimum editor height to consider the console to be expanded
  */
 const consoleCollapseThreshold = 55;
-const consoleExpandThreshold = 225;
+const consoleExpandThreshold = 235;
 const consoleCollapseFinal = 43;
-const consoleExpandFinal = 210;
+const consoleExpandFinal = 220;
 const showTextThreshold = 445;
 const hideTextThreshold = 310;
 const minExpandedConsole = 714;

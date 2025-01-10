@@ -24,17 +24,17 @@
     place-items: center;
     background-color: var(--clr-shades-trans);
     opacity: 1;
-    transform: scale(1);
     pointer-events: all;
-    overflow: hidden;
     transition: all 500ms var(--trans-bouncy);
 
     &__container {
         width: 70%;
+        max-height: 100%;
         border-radius: 10px;
         background-color: var(--clr-neutral-50);
         box-shadow: 0px 0px 10px 0px var(--clr-shadow);
         padding: 2rem;
+        overflow: hidden;
         transition: all 500ms var(--trans-bouncy);
 
         .import-menu-close {
@@ -304,7 +304,6 @@
 
         .import-menu__container {
             width: 0;
-            opacity: 0;
         }
     }
 }

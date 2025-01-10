@@ -266,6 +266,17 @@
                         <p class="text-icon">Examples</p>
                     </button>
 
+                    <button class="control-panel__btn" id="import-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512"
+                            class="import-file-icon icon">
+                            <!-- !Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                            <!-- Import file icon gotten from: https://fontawesome.com/icons/file-import?f=classic&s=solid -->
+                            <path
+                                d="M128 64c0-35.3 28.7-64 64-64L352 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64l-256 0c-35.3 0-64-28.7-64-64l0-112 174.1 0-39 39c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l39 39L128 288l0-224zm0 224l0 48L24 336c-13.3 0-24-10.7-24-24s10.7-24 24-24l104 0zM512 128l-128 0L384 0 512 128z" />
+                        </svg>
+                        <p class="text-icon">Import</p>
+                    </button>
+
                     <button class="control-panel__btn" id="save-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 384 512"
                             class="save-file-icon icon">
@@ -292,7 +303,7 @@
                 <div class="ide">
                     <div class="ide__tabs">
                         <ul class="ide__tabs__left">
-                            <li class="ide__tabs__add" id="ide-tab-add">
+                            <li class="ide__tabs__add">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 448 512"
                                     class="plus-icon icon">
                                     <!-- !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
@@ -300,6 +311,9 @@
                                     <path
                                         d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
                                 </svg>
+                                <p class="ide__tabs__add-td" id="ide-add-td">TD</p>
+                                <p class="ide__tabs__add-tm" id="ide-add-tm">TM</p>
+                                <p class="ide__tabs__add-import" id="ide-add-import">Import</p>
                             </li>
                         </ul>
 
@@ -1111,8 +1125,9 @@
                 </div>
 
                 <div class="save-menu-title">
-                    <p>Share this <span id="thing-type-text">TD</span> by creating a link or download it to your device!
-                    </p>
+                    <h3>Share this <span id="thing-type-text">TD</span> by creating a link or download it to your
+                        device!
+                    </h3>
                 </div>
 
                 <div class="share-td">
@@ -1183,6 +1198,101 @@
                     <button class="confirm-btn" id="yaml-confirm-btn">Confirm</button>
                     <button class="cancel-btn" id="yaml-cancel-btn">Cancel</button>
                 </div>
+            </div>
+        </div>
+
+        <!--Import menu-->
+        <div class="import-menu closed">
+            <div class="import-menu__container">
+                <div class="import-menu-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 384 512"
+                        class="x-icon icon">
+                        <!-- !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                        <!-- x icon gotten from: https://fontawesome.com/icons/xmark?f=classic&s=solid -->
+                        <path
+                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                    </svg>
+                </div>
+
+                <div class="import-menu-title">
+                    <h3>Convert other formats to TD/TM and import them into Playground!</h3>
+                </div>
+
+                <div class="import-editors">
+                    <div class="import-editors__input">
+                        <div class="import-options">
+                            <input type="radio" name="format-input" value="tm" id="tm-input" class="option-btn" checked>
+                            <input type="radio" name="format-input" value="aas-aid" id="aas-aid-input"
+                                class="option-btn">
+                            <!-- TODO: Add other cases for other formats -->
+                            <!-- <input type="radio" name="format-input" value="open-api" id="open-api-input" class="option-btn">
+                            <input type="radio" name="format-input" value="async-api" id="async-api-input" class="option-btn"> -->
+                        </div>
+
+                        <div class="input-editor editor" id="input-format-editor"></div>
+                    </div>
+                    <div class="import-editors__parameters">
+                        <p class="title">Parameters</p>
+                        <div class="parameters-editor editor" id="parameters-editor"></div>
+                    </div>
+                </div>
+
+
+                <div class="error-msg-container hidden">
+                    <details class="error-msg">
+                        <summary class="error-msg__header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512"
+                                class="error-msg-icon">
+                                <!-- !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                                <!-- Error circle icon gotten from: https://fontawesome.com/icons/circle-xmark?f=classic&s=solid -->
+                                <path
+                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
+                            </svg>
+                            <p class="error-msg-title"></p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 448 512"
+                                class="show-icon">
+                                <!-- !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                                <!-- Arrow icon gotten from: https://fontawesome.com/icons/chevron-right?f=classic&s=solid -->
+                                <path
+                                    d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                            </svg>
+                        </summary>
+                        <p class="error-msg__body"></p>
+                    </details>
+                    <div class="close-msg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 384 512"
+                            class="x-icon icon">
+                            <!-- !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                            <!-- x icon gotten from: https://fontawesome.com/icons/xmark?f=classic&s=solid -->
+                            <path
+                                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="import-btns">
+                    <button class="import-btns__convert" id="import-btn-convert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512"
+                            class="import-file-icon icon">
+                            <!-- !Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                            <!-- Import file icon gotten from: https://fontawesome.com/icons/file-import?f=classic&s=solid -->
+                            <path
+                                d="M128 64c0-35.3 28.7-64 64-64L352 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64l-256 0c-35.3 0-64-28.7-64-64l0-112 174.1 0-39 39c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l39 39L128 288l0-224zm0 224l0 48L24 336c-13.3 0-24-10.7-24-24s10.7-24 24-24l104 0zM512 128l-128 0L384 0 512 128z" />
+                        </svg>
+                        Convert
+                    </button>
+                    <button class="import-btns__cancel" id="import-btn-cancel">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 384 512"
+                            class="x-icon icon">
+                            <!-- !Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+                            <!-- x icon gotten from: https://fontawesome.com/icons/xmark?f=classic&s=solid -->
+                            <path
+                                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                        </svg>
+                        Cancel
+                    </button>
+                </div>
+
             </div>
         </div>
     </main>

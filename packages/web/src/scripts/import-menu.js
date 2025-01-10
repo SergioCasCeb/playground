@@ -23,7 +23,7 @@
 
 import { createIde, ideCount } from "./editor"
 import { generateTDFromAAS } from './util'
-const importMenu = document.querySelector(".import-menu")
+export const importMenu = document.querySelector(".import-menu")
 const closeImportMenu = document.querySelector(".import-menu-close svg")
 const importMenuBtn = document.querySelector("#import-btn")
 const importMenuContainer = document.querySelector(".import-menu__container")

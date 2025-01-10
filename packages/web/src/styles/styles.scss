@@ -25,8 +25,10 @@
 
 :root {
     /*Fonts styles*/
-    --ff-primary: 'Roboto', sans-serif;
-    --ff-secondary: 'Open Sans', sans-serif;
+    // --ff-primary: 'Roboto', sans-serif;
+    // --ff-secondary: 'Open Sans', sans-serif;
+    --ff-secondary: 'Roboto', sans-serif;
+    --ff-primary: 'Open Sans', sans-serif;
 
     /*Font weights*/
     --fw-light: 300;
@@ -58,13 +60,14 @@
 
 
     /*line heights*/
-    --lh-h1: 4rem;
-    --lh-h2: 4rem;
-    --lh-h3: 3.5rem;
-    --lh-sub-header: 3rem;
-    --lh-p: 2.2rem;
-    --lh-footer: 1.4rem;
-    --lh-i: 2rem;
+    --lh-h1: calc(var(--fs-h1) * 1.2);
+    --lh-h2: calc(var(--fs-h2) * 1.2);
+    --lh-h3: calc(var(--fs-h3) * 1.2);
+    --lh-sub-header: calc(var(--fs-sub-header) * 1.2);
+    --lh-p: calc(var(--fs-p) * 1.5);
+    --lh-p-lg: calc(var(--fs-p-lg) * 1.5);
+    --lh-footer: calc(var(--fs-footer) * 1.5);
+    --lh-i: calc(var(--fs-i) * 1.4);
 
     /*colors*/
     //neutrals
@@ -505,6 +508,7 @@ main {
 @import "examples-menu";
 @import "save-menu";
 @import "json-yaml-warning";
+@import "import-menu";
 
 /** Visualizations **/
 @import "jsonld-vis"

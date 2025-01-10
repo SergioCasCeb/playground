@@ -32,13 +32,16 @@ import tmSchema from '../../../core/tm-schema.json'
 import { convertTDJsonToYaml, convertTDYamlToJson } from '../../../core/dist/web-bundle.min.js'
 import { configure, checkTypos } from '@thingweb/json-spell-checker/dist/web-bundle.min.js'
 import { clearConsole } from './console'
+import { importMenu } from './import-menu.js'
 
 /***********************************************************/
 /*                    Editor and tabs                      */
 /***********************************************************/
 
 //Declare all necessary item from the DOM
-const addTab = document.querySelector(".ide__tabs__add")
+const addTD = document.getElementById("ide-add-td")
+const addTM = document.getElementById("ide-add-tm")
+const addImport = document.getElementById("ide-add-import")
 const tabsLeftContainer = document.querySelector(".ide__tabs__left")
 const ideContainer = document.querySelector(".ide__container")
 export let tabsLeft = document.querySelectorAll(".ide__tabs__left li:not(:last-child)")
@@ -240,17 +243,28 @@ export function createIde(ideNumber, exampleValue) {
   if (url === "") {
     // If example value is empty utilize a preset of the most basic form of a td
     // else utilize the td/tm from the exampleValue
-    if (exampleValue === undefined) {
+    if (exampleValue === undefined || exampleValue === "td") {
       defaultValue = {
         "@context": "https://www.w3.org/2022/wot/td/v1.1",
         "id": "urn:uuid:0804d572-cce8-422a-bb7c-4412fcd56f06",
         "@type": "Thing",
-        "title": `Thing Template`,
-        "description": "This is your customizable template. Edit it to fit your Thing Description or Thing Model needs!",
+        "title": `TD Template`,
+        "description": "This is your customizable template. Edit it to fit your Thing Description needs!",
         "securityDefinitions": {
           "basic_sc": { "scheme": "basic", "in": "header" }
         },
         "security": "basic_sc",
+        "properties": {},
+        "actions": {},
+        "events": {}
+      }
+    }
+    else if (exampleValue === "tm") {
+      defaultValue = {
+        "@context": "https://www.w3.org/2022/wot/td/v1.1",
+        "@type": "tm:ThingModel",
+        "title": `TM Template`,
+        "description": "This is your customizable template. Edit it to fit your Thing Model needs!",
         "properties": {},
         "actions": {},
         "events": {}
@@ -427,13 +441,31 @@ function changeThingIcon(thingType) {
 }
 
 /**
- * Create a new editor and respective tab when clicking on the plus tab
- * Always initialized the new added thing as a TD
- * Set the json btn to true
+ * Create a new editor and respective tab for a default TD when clicking 
+ * on the TD button inside the plus icon and set the json btn to true
  */
-addTab.addEventListener("click", () => {
-  createIde(++ideCount.ideNumber)
+addTD.addEventListener("click", () => {
+  createIde(++ideCount.ideNumber, "td")
   jsonBtn.checked = true
+})
+
+/**
+ * Create a new editor and respective tab for a default TM when clicking 
+ * on the TM button inside the plus icon and set the json btn to true
+ */
+addTM.addEventListener("click", () => {
+  createIde(++ideCount.ideNumber, "tm")
+  jsonBtn.checked = true
+})
+
+/**
+ * Open the import editor menu when clicking on the import button inside the plus tab button
+ */
+addImport.addEventListener("click", () => {
+  console.log(importMenu);
+  console.log(importMenu.classList);
+  importMenu.classList.remove("closed")
+  console.log(importMenu.classList);
 })
 
 /**
